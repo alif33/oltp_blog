@@ -1,8 +1,22 @@
 ﻿<?php include('inc/header.php');?>
 <?php include('inc/sidebar.php');?>
+<?php
+ $filepath = realpath(dirname(__FILE__));
+ include_once ($filepath.'/../classes/Category.php');
+    $cat = new Category();
+ ?>
         <div class="grid_10">
             <div class="box round first grid">
                 <h2>Category List</h2>
+             <?php   
+                if(isset($_GET['did'])){	
+                    $id = preg_replace('/[^-a-zA-Z0-9_]/','', $_GET['did']);
+                    $delCat = $cat->Cat_del($id);
+                } 
+                if(isset($delCat)){
+                    echo $delCat;
+                }               
+                ?>
                 <div class="block">        
                     <table class="data display datatable" id="example">
 					<thead>
@@ -13,46 +27,19 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr class="odd gradeX">
-							<td>01</td>
-							<td>Internet</td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-						<tr class="even gradeC">
-							<td>02</td>
-							<td>Explorer </td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-						<tr class="odd gradeX">
-							<td>03</td>
-							<td>Internet</td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-						<tr class="even gradeC">
-							<td>04</td>
-							<td>Explorer </td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-							<tr class="odd gradeX">
-							<td>05</td>
-							<td>Internet</td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-						<tr class="even gradeC">
-							<td>06</td>
-							<td>Explorer </td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-						<tr class="odd gradeX">
-							<td>07</td>
-							<td>Internet</td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-						<tr class="even gradeC">
-							<td>08</td>
-							<td>Explorer </td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
+                    <?php 
+                    $getCat = $cat->Cat_list();
+                    if($getCat){
+                        $i = 0;
+                        while($value = $getCat->fetch_assoc()){
+                        $i++;
+                    ?>
+						<tr class="odd gradeX" style="text-align:center;" >
+							<td><?php echo $i;?></td>
+							<td><?php echo $value['catName'];?></td>
+							<td><a href="catedit.php?eid<?php echo $value['catId']?>">Edit</a> || <a href="?did=<?php echo $value['catId']?>">Delete</a></td>
+                        </tr>
+                    <?php }}?>            				
 					</tbody>
 				</table>
                </div>

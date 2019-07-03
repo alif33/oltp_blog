@@ -28,13 +28,13 @@ if($catName == ""){
     }    
     }
 }
-public function Category_list(){
+public function Cat_list(){
         $query  = "SELECT * FROM tbl_category";
         $result = $this->db->select($query); 
         return $result;         
     }   
-public function Category_del($delid){
-    $query  = "DELETE FROM tbl_category WHERE catId='$delid' ";
+public function Cat_del($id){
+    $query  = "DELETE FROM tbl_category WHERE catId='$id' ";
     $result = $this->db->delete($query); 
     if($result){
         $delmsg = "<span class='success'>Category Deleted successfully !</span>";
