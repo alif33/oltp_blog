@@ -32,7 +32,7 @@ public function Category_list(){
         $query  = "SELECT * FROM tbl_category";
         $result = $this->db->select($query); 
         return $result;         
-    }
+    }   
 public function Category_del($delid){
     $query  = "DELETE FROM tbl_category WHERE catId='$delid' ";
     $result = $this->db->delete($query); 
