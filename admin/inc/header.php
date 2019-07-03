@@ -1,13 +1,3 @@
-<?php
-include dirname(__FILE__).'/../../lib/Database.php';
-include dirname(__FILE__).'/../../helpers/Format.php';
-include dirname(__FILE__).'/../../classes/Category.php';
-include dirname(__FILE__).'/../../classes/Post.php';
-$db = new Database();
-$fm = new Format();
-$cat = new Category();
-$pst = new Post();
-?>
 
 <!DOCTYPE html>
 <html>

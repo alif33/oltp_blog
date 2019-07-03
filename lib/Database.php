@@ -1,4 +1,7 @@
-<?php
+<?php 
+$filepath = realpath(dirname(__FILE__));
+include_once ($filepath.'/../config/config.php');
+
 Class Database{
 	public $host   = DB_HOST;
 	public $user   = DB_USER;
@@ -22,7 +25,6 @@ Class Database{
  }
 	
 	// Select or Read data
-	
 	public function select($query){
 		$result = $this->link->query($query) or die($this->link->error.__LINE__);
 		if($result->num_rows > 0){
@@ -36,10 +38,9 @@ Class Database{
 	public function insert($query){
 	$insert_row = $this->link->query($query) or die($this->link->error.__LINE__);
 	if($insert_row){
-		header("Location: index.php?msg=".urlencode('Data Inserted successfully.'));
-		exit();
+		return $insert_row;
 	} else {
-		die("Error :(".$this->link->errno.")".$this->link->error);
+		return false;
 	}
   }
   
@@ -47,25 +48,22 @@ Class Database{
   	public function update($query){
 	$update_row = $this->link->query($query) or die($this->link->error.__LINE__);
 	if($update_row){
-		header("Location: index.php?msg=".urlencode('Data Updated successfully.'));
-		exit();
+		return $update_row;
 	} else {
-		die("Error :(".$this->link->errno.")".$this->link->error);
+		return false;
 	}
   }
   
-  // Delete data
+  //Delete data
    public function delete($query){
 	$delete_row = $this->link->query($query) or die($this->link->error.__LINE__);
 	if($delete_row){
-		header("Location: index.php?msg=".urlencode('Data Deleted successfully.'));
-		exit();
+		return $delete_row;
 	} else {
-		die("Error :(".$this->link->errno.")".$this->link->error);
+		return false;
 	}
   }
 
  
  
 }
-

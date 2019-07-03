@@ -10,21 +10,21 @@ public function __construct(){
 $this->db = new Database();
 $this->fm = new Format();
 }
-public function addCategory($catName){
-$catName = $this->fm->validation($catName);
+public function add_Category($data){
+$catName = $this->fm->validation($data['catName']);
 $catName = mysqli_real_escape_string($this->db->link , $catName);
 if($catName == ""){
-    $catadd_msg = "Category must not be empty .";
-    return $catadd_msg;
+    $msg = "<span class='error'>Category must not be empty .</span>";
+    return $msg;
 }else{
     $query  = "INSERT INTO tbl_category(catName) Values('$catName')";
     $result = $this->db->insert($query); 
     if($result){
-    $catadd_msg = "<span class='success'>Category Inserted Successfully .</span>";
-    return $catadd_msg;
+    $msg = "<span class='success'>Category Inserted Successfully .</span>";
+    return $msg;
     }else{
-    $catadd_msg = "Category Not Inserted .";
-    return $catadd_msg;   
+    $msg = "<span class='error'>Category Not Inserted .</span>";
+    return $msg;   
     }    
     }
 }
