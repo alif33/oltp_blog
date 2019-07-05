@@ -97,6 +97,7 @@ public function del_post($id){
         return $msg;
     }
 }
+
 public function get_product($id){
     $query = "SELECT * FROM tbl_product WHERE productId='$id'";
     $value = $this->db->select($query);
@@ -198,7 +199,12 @@ $query = "SELECT * FROM  tbl_post WHERE id='$id' ";
         $result = $this->db->select($query);
         return $result;
     } 
-
+public function ral_post($id){       
+    $query = "SELECT * FROM  tbl_post WHERE catId='$id' ";
+            $result = $this->db->select($query);
+            return $result;
+        } 
+    
 
 
 
