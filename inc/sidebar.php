@@ -2,40 +2,32 @@
 			<div class="samesidebar clear">
 				<h2>Categories</h2>
 					<ul>
-						<li><a href="#">Category One</a></li>
-						<li><a href="#">Category Two</a></li>
-						<li><a href="#">Category Three</a></li>
-						<li><a href="#">Category Four</a></li>
-						<li><a href="#">Category Five</a></li>						
+				<?php 
+				$getCat = $cat->Cat_list();
+				if($getCat){
+				while($value = $getCat->fetch_assoc()){
+				?>
+				<li><a href="<?php echo $value['catId'];?>"><?php echo $value['catName'];?></a></li>
+
+				<?php }} ?>								
 					</ul>
 			</div>
 			
-			<div class="samesidebar clear">
+			<div class="samesidebar clear">				
 				<h2>Latest articles</h2>
-					<div class="popular clear">
-						<h3><a href="#">Post title will be go here..</a></h3>
-						<a href="#"><img src="images/post1.jpg" alt="post image"/></a>
-						<p>Sidebar text will be go here.Sidebar text will be go here.Sidebar text will be go here.Sidebar text will be go here.</p>	
-					</div>
+				<?php 
+				$getPost = $pst->get_new_post();
+				if($getPost){
+				while($value = $getPost->fetch_assoc()){
+				?>
+				<div class="popular clear">
+					<h3><a href="#"><?php echo $value['title'];?></a></h3>
+					<a href="post.php?pid=<?php echo $value['id'];?>"><img src="admin/<?php echo $value['image'];?>" alt="post image"/></a>
+					<p><?php echo $fm->textShorten($value['body'],40);?></p>
+					<a id="det_lie" href="post.php?pid=<?php echo $value['id'];?>">Details </a>
+				</div>
+				<?php }} ?>	
 					
-					<div class="popular clear">
-						<h3><a href="#">Post title will be go here..</a></h3>
-						<a href="#"><img src="images/post1.jpg" alt="post image"/></a>
-						<p>Sidebar text will be go here.Sidebar text will be go here.Sidebar text will be go here.Sidebar text will be go here.</p>	
-					</div>
-					
-					<div class="popular clear">
-						<h3><a href="#">Post title will be go here..</a></h3>
-						<a href="#"><img src="images/post1.jpg" alt="post image"/></a>
-						<p>Sidebar text will be go here.Sidebar text will be go here.Sidebar text will be go here.Sidebar text will be go here.</p>	
-					</div>
-					
-					<div class="popular clear">
-						<h3><a href="#">Post title will be go here..</a></h3>
-						<a href="#"><img src="images/post1.jpg" alt="post image"/></a>
-						<p>Sidebar text will be go here.Sidebar text will be go here.Sidebar text will be go here.Sidebar text will be go here.</p>	
-					</div>
-	
 			</div>
 			
 		</div>

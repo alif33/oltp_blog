@@ -1,5 +1,14 @@
-
-
+<?php
+$filepath = realpath(dirname(__FILE__));
+include_once ($filepath.'/../lib/Database.php');
+include_once ($filepath.'/../helpers/Format.php');
+include_once ($filepath.'/../classes/Post.php');
+include_once ($filepath.'/../classes/Category.php');
+$db = new Database();
+$fm = new Format();
+$pst = new Post();
+$cat = new Category();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +22,7 @@
 	<link rel="stylesheet" href="style.css">
 	<script src="js/jquery.js" type="text/javascript"></script>
 	<script src="js/jquery.nivo.slider.js" type="text/javascript"></script>
-
+<style>#det_lie{padding:0px 10px;background:red;color:#fff;text-decoration:none;margin-top:10px;}</style>
 <script type="text/javascript">
 $(window).load(function() {
 	$('#slider').nivoSlider({

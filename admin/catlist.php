@@ -31,7 +31,7 @@
                     $getCat = $cat->Cat_list();
                     if($getCat){
                         $i = 0;
-                        while($value = $getCat->fetch_assoc()){
+                    while($value = $getCat->fetch_assoc()){
                         $i++;
                     ?>
 						<tr class="odd gradeX" style="text-align:center;" >

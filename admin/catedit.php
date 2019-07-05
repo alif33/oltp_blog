@@ -1,10 +1,10 @@
 <?php include("inc/header.php");?>
- <?php include("inc/sidebar.php");?>
- <?php
+<?php include("inc/sidebar.php");?>
+<?php
  $filepath = realpath(dirname(__FILE__));
  include_once ($filepath.'/../classes/Category.php');
     $cat = new Category();
- ?>
+?>
 
 <?php
 if(isset($_GET['eid'])){	
@@ -30,7 +30,7 @@ if(isset($_GET['eid'])){
                         <?php
                         $catName = $cat->getCategory($cid);
                         if($catName){                           
-			while($print = $catName->fetch_assoc()){
+			            while($print = $catName->fetch_assoc()){
                         ?>
                         <input type="text"  name="catName" value="<?php echo $print['catName']?>" class="medium" />
                         <?php }} ?>

@@ -25,7 +25,7 @@ if($catName == ""){
     }else{
     $msg = "<span class='error'>Category Not Inserted .</span>";
     return $msg;   
-    }    
+        }    
     }
 }
 public function Cat_list(){
