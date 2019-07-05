@@ -57,9 +57,11 @@
         });
     </script>
     <!-- /TinyMCE -->
-    <style type="text/css">
-		#tinymce{font-size:15px !important;}
-    </style>
+<style type="text/css">
+    #tinymce{font-size:15px !important;}
+    .slo-left{width:70%;float:left;}
+    .slo-right{width:30%;float:right;}
+</style>
 </head>
 <body>
     <div class="container_12">

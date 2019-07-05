@@ -72,4 +72,4 @@ $(document).ready(function () {
 		setSidebarHeight();
 });
 </script>
- 
+<?php include('inc/footer.php');?> 

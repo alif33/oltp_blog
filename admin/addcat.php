@@ -1,10 +1,10 @@
 ﻿<?php include("inc/header.php");?>
  <?php include("inc/sidebar.php");?>
- <?php
- $filepath = realpath(dirname(__FILE__));
- include_once ($filepath.'/../classes/Category.php');
+<?php
+    $filepath = realpath(dirname(__FILE__));
+    include_once ($filepath.'/../classes/Category.php');
     $cat = new Category();
- ?>
+?>
         <div class="grid_10">		
             <div class="box round first grid">
                 <h2>Add New Category</h2>
