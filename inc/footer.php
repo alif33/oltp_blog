@@ -7,7 +7,13 @@
 			<li><a href="#">Privacy</a></li>
 		</ul>
 	  </div>
-	  <p>&copy; Copyright Training with live project.</p>
+	  <?php
+			$copy = $slo->get_copy();
+			if($copy){
+			while($val = $copy->fetch_assoc()){ 
+		?>
+	  <p>&copy; <?php echo $val['copy'];?></p>
+		<?php }}?>
 	</div>
 	<div class="fixedicon clear">
 		<a href="http://www.facebook.com"><img src="images/fb.png" alt="Facebook"/></a>

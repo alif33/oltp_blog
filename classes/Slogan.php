@@ -119,6 +119,34 @@ public function update_social($post){
                 return $msg;
             }
         }  
+}
+
+public function get_copy(){
+    $query = "SELECT * FROM tbl_copyright";
+    $value = $this->db->select($query);
+    return $value;
+}
+public function update_copy($post){
+    $copy = $this->fm->validation($post['copy']);
+//---------mysqli_part
+    $copy = mysqli_real_escape_string($this->db->link , $copy);  
+    if ($copy == ""){
+        $msg = "<span class='error'>Field must not be empty !</span>";
+        return $msg;
+    } else {
+        $query = "UPDATE tbl_copyright
+        SET
+        copy ='$copy'        
+        WHERE id = 1 ";
+            $update = $this->db->update($query);
+            if ($update) {
+                $msg = "<span class='success'>Copyright Updated Successfully .</span>";
+                return $msg;
+            } else {
+                $msg = "<span class='error'>Copyright Not Updated !</span>";
+                return $msg;
+            }
+        }  
 
 }
 

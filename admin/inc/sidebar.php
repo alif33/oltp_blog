@@ -16,6 +16,13 @@
                                 <li><a>Contact Us</a></li>
                             </ul>
                         </li>
+                        <!-- Add pages -->
+                        <li><a class="menuitem">Add Pages</a>
+                            <ul class="submenu">
+                                <li><a  href="addpage.php">Add new page</a></li>
+                                <li><a >Contact Us</a></li>
+                            </ul>
+                        </li>
                         <li><a class="menuitem">Category Option</a>
                             <ul class="submenu">
                                  <li><a href="addcat.php">Add Category</a> </li>
