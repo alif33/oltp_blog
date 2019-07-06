@@ -63,12 +63,18 @@ $(window).load(function() {
 			</div>
 		</a>
 		<div class="social clear">
-			<div class="icon clear">
-				<a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-				<a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-				<a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
-				<a href="#" target="_blank"><i class="fa fa-google-plus"></i></a>
+		<?php
+			  $soc = $slo->get_social();
+			  if($soc){
+			  while($val = $soc->fetch_assoc()){ 
+		?>
+			<div class="icon clear">			
+				<a href="<?php echo $val['fa'];?>" target="_blank"><i class="fa fa-facebook"></i></a>
+				<a href="<?php echo $val['tw'];?>" target="_blank"><i class="fa fa-twitter"></i></a>
+				<a href="<?php echo $val['ln'];?>" target="_blank"><i class="fa fa-linkedin"></i></a>
+				<a href="<?php echo $val['gp'];?>" target="_blank"><i class="fa fa-google-plus"></i></a>
 			</div>
+		<?php }}?>	
 			<div class="searchbtn clear">
 			<form action="" method="post">
 				<input type="text" name="keyword" placeholder="Search keyword..."/>

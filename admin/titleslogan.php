@@ -22,7 +22,8 @@ if(isset($upSlo)){
         <?php
         $slo = $slo->get_slogan();
         if($slo){
-            while($val = $slo->fetch_assoc()){ ?>
+        while($val = $slo->fetch_assoc()){ 
+        ?>
         <table class="form">					
                 <tr>
                     <td>

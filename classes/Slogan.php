@@ -33,7 +33,7 @@ public function update_slogan($_post , $file){
     $file_ext = strtolower(end($div));
     $unique_image = substr(md5(time()), 0, 10).'.'.$file_ext;
     $uploaded_image = "uploads/".$unique_image;
-    
+
     if ($title == "" || $slogan == "" ) {
         $msg = "<span class='error'>Field must not be empty !</span>";
         return $msg;
@@ -80,5 +80,48 @@ public function update_slogan($_post , $file){
         }
     }
 }
+
+/*####################---------Social media section start------------#########################*/
+
+public function get_social(){
+    $query = "SELECT * FROM tbl_social";
+    $value = $this->db->select($query);
+    return $value;
+}
+public function update_social($post){
+    $fa = $this->fm->validation($post['fa']);
+    $tw = $this->fm->validation($post['tw']);
+    $ln = $this->fm->validation($post['ln']);
+    $gp = $this->fm->validation($post['gp']);
+//---------mysqli_part
+    $fa = mysqli_real_escape_string($this->db->link , $fa);
+    $tw = mysqli_real_escape_string($this->db->link , $tw); 
+    $ln = mysqli_real_escape_string($this->db->link , $ln);
+    $gp = mysqli_real_escape_string($this->db->link , $gp); 
+    
+    if ($fa == "" || $tw == "" || $ln == "" || $gp == ""){
+        $msg = "<span class='error'>Field must not be empty !</span>";
+        return $msg;
+    } else {
+        $query = "UPDATE tbl_social
+        SET
+        fa ='$fa',
+        tw ='$tw',
+        ln ='$ln',
+        gp ='$gp'         
+        WHERE id = 1 ";
+            $update = $this->db->update($query);
+            if ($update) {
+                $msg = "<span class='success'>Product Updated Successfully .</span>";
+                return $msg;
+            } else {
+                $msg = "<span class='error'> Product Not Updated !</span>";
+                return $msg;
+            }
+        }  
+
+}
+
+
 //End brackets
 }
