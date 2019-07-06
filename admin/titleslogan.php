@@ -8,16 +8,28 @@
 ?>		
     <div class="box round first grid">
         <h2>Update Site Title and Description</h2>
-        <div class="block sloginblock">               
-           <div class="slo-left">
-            <form action="" method="post" >
-            <table class="form">					
+<?php
+if($_SERVER['REQUEST_METHOD'] == "POST"){
+$upSlo = $slo->update_slogan($_POST , $_FILES);
+}
+if(isset($upSlo)){
+    echo $upSlo;
+}
+?> 
+    <div class="block sloginblock">               
+        <div class="slo-left">
+        <form action="" method="post" >
+        <?php
+        $slo = $slo->get_slogan();
+        if($slo){
+            while($val = $slo->fetch_assoc()){ ?>
+        <table class="form">					
                 <tr>
                     <td>
                         <label>Website Title</label>
                     </td>
                     <td>
-                        <input type="text" value=" "  name="title" class="medium" />
+                        <input type="text" value="<?php echo $val['title'];?>"  name="title" class="medium" />
                     </td>
                 </tr>
                 <tr>
@@ -25,7 +37,7 @@
                         <label>Website Slogan</label>
                     </td>
                     <td>
-                        <input type="text" value=" " name="slogan" class="medium" />
+                        <input type="text" value="<?php echo $val['slogan'];?>" name="slogan" class="medium" />
                     </td>
                 </tr>
                 <tr>
@@ -33,7 +45,7 @@
                         <label>Website Image</label>
                     </td>
                     <td>
-                        <input type="file" name="image" class="medium" />
+                    <input type="file" name="image" />
                     </td>
                 </tr>                         
                 <tr>
@@ -45,8 +57,9 @@
             </table>
             </form>
             </div>
-        <div class="slo-right"><img src="upload/logo.png" alt=""></div>            
+        <div class="slo-right"><img src="upload/<?php echo $val['image'];?>" alt=""></div>            
         </div>
+    <?php }} ?>    
     </div>
 </div>
 <div class="clear"></div>

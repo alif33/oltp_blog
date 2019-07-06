@@ -21,8 +21,7 @@ public function __construct(){
         $catId = mysqli_real_escape_string($this->db->link , $catId);
         $date = mysqli_real_escape_string($this->db->link , $date);
         $body = mysqli_real_escape_string($this->db->link , $body);
-
-        //image validation(http://www.trainingwithliveproject.com/2016/04/upload-image-with-validation-php-oop-bangla.html)
+//image validation(http://www.trainingwithliveproject.com/2016/04/upload-image-with-validation-php-oop-bangla.html)
         $permited  = array('jpg', 'jpeg', 'png', 'gif');
         $file_name = $file['image']['name'];
         $file_size = $file['image']['size'];

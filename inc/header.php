@@ -4,10 +4,12 @@ include_once ($filepath.'/../lib/Database.php');
 include_once ($filepath.'/../helpers/Format.php');
 include_once ($filepath.'/../classes/Post.php');
 include_once ($filepath.'/../classes/Category.php');
+include_once ($filepath.'/../classes/Slogan.php');
 $db = new Database();
 $fm = new Format();
 $pst = new Post();
 $cat = new Category();
+$slo = new Slogan();
 ?>
 <!DOCTYPE html>
 <html>
@@ -50,9 +52,14 @@ $(window).load(function() {
 	<div class="headersection templete clear">
 		<a href="#">
 			<div class="logo">
-				<img src="images/logo.png" alt="Logo"/>
-				<h2>Website Title</h2>
-				<p>Our website description</p>
+			<?php
+			$slogan = $slo->get_slogan();
+			if($slogan){
+			while($val = $slogan->fetch_assoc()){ ?>
+				<img src="admin/upload/<?php echo $val['image'];?>" alt="Logo"/>
+				<h2><?php echo $val['title'];?></h2>
+				<p><?php echo $val['slogan'];?></p>
+				<?php }} ?>
 			</div>
 		</a>
 		<div class="social clear">

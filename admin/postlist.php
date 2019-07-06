@@ -37,12 +37,12 @@ echo $delpost;
 		</thead>
 		<tbody>	
 		<?php 
-                    $getPost = $pst->post_list();
-                    if($getPost){
-                        $i = 0;
-                        while($value = $getPost->fetch_assoc()){
-                        $i++;
-                    ?>		
+		$getPost = $pst->post_list();
+		if($getPost){
+			$i = 0;
+			while($value = $getPost->fetch_assoc()){
+			$i++;
+		?>		
 		<tr class="odd gradeX" style="text-align:center;">		
 			<td><?php echo $i ;?></td>
 			<td><?php echo $value['catName']?></td>
