@@ -1,3 +1,9 @@
+<?php
+$filepath = realpath(dirname(__FILE__));
+include_once ($filepath.'/../../classes/Page.php');
+$page= new Page();
+?>
+
 <div class="grid_2">
             <div class="box sidemenu">
                 <div class="block" id="section-menu">
@@ -19,8 +25,15 @@
                         <!-- Add pages -->
                         <li><a class="menuitem">Add Pages</a>
                             <ul class="submenu">
-                                <li><a  href="addpage.php">Add new page</a></li>
-                                <li><a >Contact Us</a></li>
+                        <li><a  href="addpage.php">New page</a></li>
+                    <?php                   
+                    $getpage = $page->page_list();
+                    if($getpage){
+                    while($val = $getpage->fetch_assoc()){
+                    ?>
+                    <li><a  href="page.php?pgid=<?php echo $val['id']?>"><?php echo $val['name']?></a></li>
+
+                    <?php }} ?>            
                             </ul>
                         </li>
                         <li><a class="menuitem">Category Option</a>
